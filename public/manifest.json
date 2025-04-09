@@ -1,0 +1,25 @@
+{
+    "short_name": "myApp",
+    "name": "CreateSampleApp",
+    "icons": [
+        {
+            "src": "icon512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icon128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "icon64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#0adff2"
+}

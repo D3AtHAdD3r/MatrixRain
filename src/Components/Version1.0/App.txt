@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from 'react';
+import "./styles.scss";
+import MatrixRainController from './Components/MatrixRainController';
+
+
+const App = () => {
+  const [clickDensity, setClickDensity] = useState(1);
+  const [scrollDensity, setScrollDensity] = useState(5);
+  const [effectDuration, setEffectDuration] = useState(2500);
+  const [mode, setMode] = useState('click'); // 'click' or 'scroll'
+
+  return (
+    <div className="app" style={{ height: '200vh', textAlign: 'center', padding: '20px' }}>
+      <h1>Scroll or Click Anywhere</h1>
+      <div>
+        <button onClick={() => setClickDensity(clickDensity + 1)}>Increase Click Density</button>
+        <button onClick={() => setScrollDensity(scrollDensity + 1)}>Increase Scroll Density</button>
+        <button onClick={() => setEffectDuration(effectDuration + 500)}>Increase Duration</button>
+        <button onClick={() => setMode(mode === 'click' ? 'scroll' : 'click')}>
+          Switch to {mode === 'click' ? 'Scroll' : 'Click'}
+        </button>
+        <p>Click Density: {clickDensity}, Scroll Density: {scrollDensity}, Duration: {effectDuration}ms</p>
+      </div>
+      <MatrixRainController
+        clickDensity={clickDensity}
+        scrollDensity={scrollDensity}
+        effectDuration={effectDuration}
+        enableClick={mode === 'click'}
+        enableScroll={mode === 'scroll'}
+      />
+    </div>
+  );
+};
+
+export default App;

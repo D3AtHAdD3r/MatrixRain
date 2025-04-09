@@ -1,0 +1,64 @@
+.matrix-rain {
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.matrix-rain.neon-green { color: #39ff14; }
+.matrix-rain.cyan { color: #00ffff; }
+.matrix-rain.hot-pink { color: #ff69b4; }
+.matrix-rain.lime { color: #ccff00; }
+.matrix-rain.violet { color: #ee82ee; }
+.matrix-rain.orange { color: #ff4500; }
+.matrix-rain.yellow { color: #ffff00; }
+.matrix-rain.teal { color: #00ced1; }
+.matrix-rain.magenta { color: #ff00ff; }
+
+.matrix-rain.gradient span {
+  background: var(--gradient, linear-gradient(to bottom, #39ff14, #00ffff));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.matrix-rain span {
+  position: absolute;
+  display: inline-block;
+  animation: fall var(--animation-duration, 2s) linear forwards;
+}
+
+.matrix-rain.pulse span {
+  animation: 
+    fall var(--animation-duration, 2s) linear forwards,
+    pulse 0.5s ease-in-out infinite alternate;
+    animation-composition: add;
+}
+
+.matrix-rain.flicker .flicker-char {
+  animation: 
+    fall var(--animation-duration, 2s) linear forwards,
+    flicker 0.3s infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(var(--fall-distance, 100px)); opacity: 0; }
+}
+
+@keyframes pulse {
+  0% { 
+    transform: scale(1);
+    text-shadow: 0 0 calc(2px * var(--pulse-strength, 1)) currentColor;
+  }
+  100% { 
+    transform: scale(calc(1 + (0.2 * var(--pulse-strength, 1))));
+    text-shadow: 0 0 calc(8px * var(--pulse-strength, 1)) currentColor;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
